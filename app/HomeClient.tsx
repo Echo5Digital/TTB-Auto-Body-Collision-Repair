@@ -17,10 +17,6 @@ import {
   Phone,
   Mail,
   ArrowRight,
-  Handshake,
-  Tag,
-  MessageCircle,
-  ClipboardList,
 } from "lucide-react";
 
 interface FaqItem {
@@ -40,10 +36,10 @@ export default function HomeClient({ faqData }: HomeClientProps) {
   };
 
   const trustBadges = [
-    { icon: Car, title: "Quality Workmanship" },
-    { icon: Handshake, title: "Honest Service" },
-    { icon: Tag, title: "Competitive Pricing" },
-    { icon: Shield, title: "Free Estimates" },
+    { icon: "/images/icon1.png", title: "Quality Workmanship" },
+    { icon: "/images/icon2.png", title: "Honest Service" },
+    { icon: "/images/icon3.png", title: "Competitive Pricing" },
+    { icon: "/images/icon4.png", title: "Free Estimates" },
   ];
 
   const services = [
@@ -130,11 +126,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
   ];
 
   const repairSteps = [
-    { icon: MessageCircle, step: "1", title: "Contact TTB", desc: "Reach out by phone or online." },
-    { icon: ClipboardList, step: "2", title: "Discuss Damage", desc: "Tell us about your vehicle and the damage." },
-    { icon: FileText, step: "3", title: "Request Estimate", desc: "Get a detailed repair estimate." },
-    { icon: Wrench, step: "4", title: "Repair Planning", desc: "We handle the repair process." },
-    { icon: Car, step: "5", title: "Completion", desc: "Pick up your vehicle with confidence." },
+    { icon: "/images/icon5.png", step: "1", title: "Contact TTB", desc: "Reach out by phone or online." },
+    { icon: "/images/icon7.png", step: "2", title: "Discuss Damage", desc: "Tell us about your vehicle and the damage." },
+    { icon: "/images/icon7.png", step: "3", title: "Request Estimate", desc: "Get a detailed repair estimate." },
+    { icon: "/images/icon8.png", step: "4", title: "Repair Planning", desc: "We handle the repair process." },
+    { icon: "/images/icon1.png", step: "5", title: "Completion", desc: "Pick up your vehicle with confidence." },
   ];
 
   return (
@@ -303,14 +299,9 @@ export default function HomeClient({ faqData }: HomeClientProps) {
       <div style={{ backgroundColor: "#0B0C0F", borderTop: "1px solid #1E2128", borderBottom: "1px solid #1E2128" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {trustBadges.map(({ icon: Icon, title }) => (
+            {trustBadges.map(({ icon, title }) => (
               <div key={title} className="flex flex-col items-center text-center gap-3">
-                <div
-                  className="w-14 h-14 flex items-center justify-center rounded-full"
-                  style={{ border: "2px solid #E50914" }}
-                >
-                  <Icon size={24} color="#E50914" strokeWidth={2} />
-                </div>
+                <img src={icon} alt="" className="w-28 h-28 object-contain" />
                 <p
                   className="uppercase leading-tight"
                   style={{
@@ -650,16 +641,16 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             <div key={step.step} className="relative flex flex-col items-center text-center gap-3">
               {idx < repairSteps.length - 1 && (
                 <div
-                  className="hidden sm:block absolute top-7 left-1/2 w-full h-[1px]"
+                  className="hidden sm:block absolute top-10 left-1/2 w-full h-[1px]"
                   style={{ backgroundColor: "#E50914", opacity: 0.4 }}
                 />
               )}
-              <div
-                className="relative w-14 h-14 flex items-center justify-center rounded-full z-10"
-                style={{ border: "2px solid #E50914", backgroundColor: "#08090B" }}
-              >
-                <step.icon size={22} color="#E50914" strokeWidth={2} />
-              </div>
+              <img
+                src={step.icon}
+                alt=""
+                className="relative w-20 h-20 object-contain z-10"
+                style={{ backgroundColor: "#08090B", borderRadius: "9999px" }}
+              />
               <h3
                 className="uppercase leading-tight"
                 style={{
@@ -864,14 +855,9 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               </div>
 
               <div className="grid grid-cols-2 gap-4 content-start sm:border-l" style={{ borderColor: "#1E2128" }}>
-                {trustBadges.map(({ icon: Icon, title }) => (
+                {trustBadges.map(({ icon, title }) => (
                   <div key={title} className="flex flex-col items-center text-center gap-2 px-2">
-                    <div
-                      className="w-11 h-11 flex items-center justify-center rounded-full"
-                      style={{ border: "2px solid #E50914" }}
-                    >
-                      <Icon size={19} color="#E50914" strokeWidth={2} />
-                    </div>
+                    <img src={icon} alt="" className="w-24 h-24 object-contain" />
                     <p
                       className="uppercase leading-tight"
                       style={{

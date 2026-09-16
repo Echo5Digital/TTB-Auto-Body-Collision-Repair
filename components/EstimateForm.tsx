@@ -515,8 +515,22 @@ const EstimateForm: React.FC<EstimateFormProps> = ({ onSubmit }) => {
                 />
                 <span className="text-xs text-[#7A8090] leading-relaxed">
                   I agree to the{' '}
-                  <a href="/#" className="text-[#E50914] underline underline-offset-2">
-                    terms and privacy policy
+                  <a
+                    href="/terms-of-use"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#E50914] underline underline-offset-2"
+                  >
+                    terms
+                  </a>{' '}
+                  and{' '}
+                  <a
+                    href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#E50914] underline underline-offset-2"
+                  >
+                    privacy policy
                   </a>
                   . I consent to be contacted by TTB Auto Body &amp; Collision Repair regarding my inquiry.
                 </span>

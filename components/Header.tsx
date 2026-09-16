@@ -19,10 +19,11 @@ interface HeaderProps {
 
 const defaultNavLinks: NavLink[] = [
   { label: 'Home', route: '/' },
-  { label: 'Services', route: '/#services' },
-  { label: 'Our Work', route: '/#before-after' },
-  { label: 'Why Choose Us', route: '/#trust' },
-  { label: 'Contact', route: '/#contact' },
+  { label: 'About', route: '/about' },
+  { label: 'Services', route: '/services' },
+  { label: 'Gallery', route: '/gallery' },
+  { label: 'FAQs', route: '/faq' },
+  { label: 'Contact', route: '/contact' },
 ];
 
 export default function Header({
@@ -30,7 +31,7 @@ export default function Header({
   phone = '(555) 123-4567',
   navLinks = defaultNavLinks,
   ctaLabel = 'Free Estimate',
-  ctaRoute = '/#estimate',
+  ctaRoute = '/estimate',
 }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

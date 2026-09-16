@@ -24,16 +24,16 @@ interface FooterProps {
 
 const defaultLinks: FooterLink[] = [
   { label: 'Home', route: '/' },
-  { label: 'Collision Repair', route: '/#services' },
-  { label: 'Auto Body Repair', route: '/#services' },
-  { label: 'Car Painting', route: '/#services' },
-  { label: 'Frame Straightening', route: '/#services' },
-  { label: 'Dent & Scratch Repair', route: '/#services' },
-  { label: 'Insurance Claims', route: '/#services' },
-  { label: 'Before & After', route: '/#before-after' },
-  { label: 'Get a Free Estimate', route: '/#estimate' },
-  { label: 'Contact Us', route: '/#contact' },
-  { label: 'Location', route: '/#location' },
+  { label: 'Collision Repair', route: '/services/collision-repair' },
+  { label: 'Auto Body Repair', route: '/services/auto-body-repair' },
+  { label: 'Car Painting', route: '/services/painting-refinishing' },
+  { label: 'Frame Straightening', route: '/services/frame-straightening' },
+  { label: 'Dent & Scratch Repair', route: '/services/dent-scratch-repair' },
+  { label: 'Insurance Claims', route: '/services/insurance-claims-assistance' },
+  { label: 'Before & After', route: '/gallery' },
+  { label: 'Get a Free Estimate', route: '/estimate' },
+  { label: 'Contact Us', route: '/contact' },
+  { label: 'Location', route: '/service-area' },
 ];
 
 export default function Footer({
@@ -138,7 +138,7 @@ export default function Footer({
           </div>
 
           <Link
-            href="/#estimate"
+            href="/estimate"
             className="inline-flex items-center gap-2 hover:brightness-110 transition-all duration-200"
             style={{
               background: 'linear-gradient(135deg, #E50914 0%, #A80712 100%)',
@@ -435,10 +435,13 @@ export default function Footer({
           &copy; {currentYear} {businessName}. All rights reserved.
         </p>
         <div style={{ display: 'flex', gap: '1.25rem' }}>
-          {['Privacy Policy', 'Terms of Service'].map(item => (
-            <a
-              key={item}
-              href="#"
+          {[
+            { label: 'Privacy Policy', route: '/privacy-policy' },
+            { label: 'Terms of Service', route: '/terms-of-use' },
+          ].map(({ label, route }) => (
+            <Link
+              key={label}
+              href={route}
               style={{
                 fontSize: '0.8rem',
                 color: '#5a6070',
@@ -448,8 +451,8 @@ export default function Footer({
               onMouseEnter={e => (e.currentTarget.style.color = '#E50914')}
               onMouseLeave={e => (e.currentTarget.style.color = '#5a6070')}
             >
-              {item}
-            </a>
+              {label}
+            </Link>
           ))}
         </div>
       </div>

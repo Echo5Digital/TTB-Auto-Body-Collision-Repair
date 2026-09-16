@@ -1,14 +1,14 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
+import { SITE_URL } from "@/lib/business";
 
 export interface Crumb {
   label: string;
   href: string;
 }
 
-const SITE_URL = "https://example.com";
-
-// Deterministic component (not AI-authored) so BreadcrumbList JSON-LD always
-// matches the visible trail exactly, per spec section 38.
+// Deterministic component so BreadcrumbList JSON-LD always matches the
+// visible trail exactly.
 export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   if (items.length === 0) return null;
 
@@ -24,21 +24,25 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-gray-500">
+    <nav aria-label="Breadcrumb" style={{ fontFamily: "Inter, sans-serif" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <ol className="flex flex-wrap items-center gap-1">
+      <ol className="flex flex-wrap items-center gap-1.5 text-xs">
         {items.map((item, i) => (
-          <li key={item.href} className="flex items-center gap-1">
-            {i > 0 && <span aria-hidden="true">/</span>}
+          <li key={item.href} className="flex items-center gap-1.5">
+            {i > 0 && <ChevronRight size={12} color="#4A5060" aria-hidden="true" />}
             {i === items.length - 1 ? (
-              <span aria-current="page" className="text-gray-700">
+              <span aria-current="page" style={{ color: "#8A8F9A" }}>
                 {item.label}
               </span>
             ) : (
-              <Link href={item.href} className="hover:underline">
+              <Link
+                href={item.href}
+                className="transition-colors duration-200 hover:text-white"
+                style={{ color: "#5a6070" }}
+              >
                 {item.label}
               </Link>
             )}

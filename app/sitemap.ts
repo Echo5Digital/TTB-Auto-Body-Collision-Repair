@@ -1,12 +1,25 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL, services } from "@/lib/business";
 
-// Injected by project-writer.ts from the planned page list — deterministic,
-// not AI-authored, so it always matches the routes that actually exist.
-const SITE_URL = "https://example.com";
-const ROUTES: string[] = ["/"];
+const STATIC_ROUTES: string[] = [
+  "/",
+  "/about",
+  "/services",
+  "/gallery",
+  "/faq",
+  "/contact",
+  "/estimate",
+  "/service-area",
+  "/privacy-policy",
+  "/terms-of-use",
+  "/thank-you",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ROUTES.map((route) => ({
+  const serviceRoutes = services.map((s) => `/services/${s.slug}`);
+  const routes = [...STATIC_ROUTES, ...serviceRoutes];
+
+  return routes.map((route) => ({
     url: `${SITE_URL}${route === "/" ? "" : route}`,
     lastModified: new Date(),
   }));
