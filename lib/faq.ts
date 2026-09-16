@@ -30,7 +30,7 @@ export const faqData: FaqItem[] = [
   {
     question: "How can I contact TTB?",
     answer:
-      "You can reach TTB Auto Body & Collision Repair by phone at 281.793.0161 or 281.975.9433, by email at ttbautorepair@gmail.com, or through the contact form on this website.",
+      "You can reach TTB Auto Body & Collision Repair by phone at 2817930161 or 2819759433, by email at ttbautorepair@gmail.com, or through the contact form on this website.",
   },
   {
     question: "Do you assist with insurance claims?",

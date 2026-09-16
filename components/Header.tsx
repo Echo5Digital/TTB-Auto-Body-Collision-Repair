@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Phone, ChevronRight } from 'lucide-react';
+import { Menu, X, Phone, ChevronRight, ChevronDown } from 'lucide-react';
+import { services } from '@/lib/business';
 
 interface NavLink {
   label: string;
@@ -35,6 +36,8 @@ export default function Header({
 }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -151,35 +154,136 @@ export default function Header({
             }}
             className="desktop-nav"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.route}
-                href={link.route}
-                style={{
-                  fontFamily: '"Barlow Condensed", sans-serif',
-                  fontWeight: 600,
-                  fontSize: '0.95rem',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(217,220,225,0.8)',
-                  textDecoration: 'none',
-                  padding: '0.4rem 0.75rem',
-                  borderRadius: '0.375rem',
-                  transition: 'color 0.2s ease, background-color 0.2s ease',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.8)';
-                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.label === 'Services' ? (
+                <div
+                  key={link.route}
+                  style={{ position: 'relative' }}
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <Link
+                    href={link.route}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.25rem',
+                      fontFamily: '"Barlow Condensed", sans-serif',
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: servicesOpen ? '#fff' : 'rgba(217,220,225,0.8)',
+                      backgroundColor: servicesOpen ? 'rgba(229,9,20,0.1)' : 'transparent',
+                      textDecoration: 'none',
+                      padding: '0.4rem 0.75rem',
+                      borderRadius: '0.375rem',
+                      transition: 'color 0.2s ease, background-color 0.2s ease',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={13}
+                      strokeWidth={2.5}
+                      style={{
+                        transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.2s ease',
+                      }}
+                    />
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      paddingTop: '0.5rem',
+                      opacity: servicesOpen ? 1 : 0,
+                      visibility: servicesOpen ? 'visible' : 'hidden',
+                      transform: servicesOpen ? 'translateY(0)' : 'translateY(-6px)',
+                      transition: 'opacity 0.18s ease, transform 0.18s ease, visibility 0.18s',
+                      zIndex: 60,
+                    }}
+                  >
+                    <div
+                      style={{
+                        minWidth: '260px',
+                        backgroundColor: '#0E0F12',
+                        border: '1px solid rgba(229,9,20,0.2)',
+                        borderRadius: '0.5rem',
+                        boxShadow: '0 12px 32px rgba(0,0,0,0.55)',
+                        padding: '0.5rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      {services.map((service) => (
+                        <Link
+                          key={service.slug}
+                          href={`/services/${service.slug}`}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.6rem 0.75rem',
+                            borderRadius: '0.375rem',
+                            fontFamily: '"Barlow Condensed", sans-serif',
+                            fontWeight: 600,
+                            fontSize: '0.9rem',
+                            letterSpacing: '0.04em',
+                            textTransform: 'uppercase',
+                            color: 'rgba(217,220,225,0.85)',
+                            textDecoration: 'none',
+                            transition: 'color 0.15s ease, background-color 0.15s ease',
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.12)';
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.85)';
+                            (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                          }}
+                        >
+                          <ChevronRight size={13} strokeWidth={2.5} color="#E50914" />
+                          {service.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.route}
+                  href={link.route}
+                  style={{
+                    fontFamily: '"Barlow Condensed", sans-serif',
+                    fontWeight: 600,
+                    fontSize: '0.95rem',
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(217,220,225,0.8)',
+                    textDecoration: 'none',
+                    padding: '0.4rem 0.75rem',
+                    borderRadius: '0.375rem',
+                    transition: 'color 0.2s ease, background-color 0.2s ease',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.8)';
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                  }}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
 
             {/* CTA Button */}
             <Link
@@ -321,39 +425,144 @@ export default function Header({
 
         {/* Drawer links */}
         <nav style={{ flex: 1, padding: '1rem 0' }}>
-          {navLinks.map((link, index) => (
-            <Link
-              key={link.route}
-              href={link.route}
-              onClick={() => setMobileOpen(false)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '0.85rem 1.25rem',
-                fontFamily: '"Barlow Condensed", sans-serif',
-                fontWeight: 600,
-                fontSize: '1.05rem',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: 'rgba(217,220,225,0.85)',
-                textDecoration: 'none',
-                borderBottom: index < navLinks.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                transition: 'color 0.2s ease, background-color 0.2s ease',
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.08)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.85)';
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
-              }}
-            >
-              {link.label}
-              <ChevronRight size={16} strokeWidth={2} style={{ opacity: 0.4 }} />
-            </Link>
-          ))}
+          {navLinks.map((link, index) =>
+            link.label === 'Services' ? (
+              <div
+                key={link.route}
+                style={{
+                  borderBottom: index < navLinks.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Link
+                    href={link.route}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      flex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '0.85rem 1.25rem',
+                      fontFamily: '"Barlow Condensed", sans-serif',
+                      fontWeight: 600,
+                      fontSize: '1.05rem',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(217,220,225,0.85)',
+                      textDecoration: 'none',
+                      transition: 'color 0.2s ease, background-color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.08)';
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.85)';
+                      (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    onClick={() => setMobileServicesOpen((prev) => !prev)}
+                    aria-label={mobileServicesOpen ? 'Collapse services' : 'Expand services'}
+                    aria-expanded={mobileServicesOpen}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'rgba(217,220,225,0.6)',
+                      cursor: 'pointer',
+                      padding: '0.85rem 1.25rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <ChevronDown
+                      size={18}
+                      strokeWidth={2}
+                      style={{
+                        transform: mobileServicesOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                        transition: 'transform 0.2s ease',
+                      }}
+                    />
+                  </button>
+                </div>
+
+                {mobileServicesOpen && (
+                  <div style={{ paddingBottom: '0.5rem' }}>
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}`}
+                        onClick={() => setMobileOpen(false)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          padding: '0.65rem 1.25rem 0.65rem 2.25rem',
+                          fontFamily: '"Barlow Condensed", sans-serif',
+                          fontWeight: 500,
+                          fontSize: '0.92rem',
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase',
+                          color: 'rgba(217,220,225,0.7)',
+                          textDecoration: 'none',
+                          transition: 'color 0.2s ease, background-color 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.08)';
+                        }}
+                        onMouseLeave={(e) => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.7)';
+                          (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                        }}
+                      >
+                        <ChevronRight size={12} strokeWidth={2.5} color="#E50914" />
+                        {service.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.route}
+                href={link.route}
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '0.85rem 1.25rem',
+                  fontFamily: '"Barlow Condensed", sans-serif',
+                  fontWeight: 600,
+                  fontSize: '1.05rem',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(217,220,225,0.85)',
+                  textDecoration: 'none',
+                  borderBottom: index < navLinks.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                  transition: 'color 0.2s ease, background-color 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'rgba(229,9,20,0.08)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(217,220,225,0.85)';
+                  (e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'transparent';
+                }}
+              >
+                {link.label}
+                <ChevronRight size={16} strokeWidth={2} style={{ opacity: 0.4 }} />
+              </Link>
+            )
+          )}
         </nav>
 
         {/* Drawer CTA */}

@@ -16,8 +16,8 @@ export const business = {
     full: "6801 Baneway Dr, Suite C, Houston, TX 77072",
   },
   phones: [
-    { display: "281.793.0161", tel: "+12817930161" },
-    { display: "281.975.9433", tel: "+12819759433" },
+    { display: "2817930161", tel: "+12817930161" },
+    { display: "2819759433", tel: "+12819759433" },
   ],
   email: "ttbautorepair@gmail.com",
   areaServed: "Houston, Texas",

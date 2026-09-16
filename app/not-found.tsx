@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <>
-      <Header phone="+1 281.793.0161" />
+      <Header phone="+1 2817930161" />
       <main style={{ backgroundColor: "#08090B", minHeight: "60vh" }}>
         <Section background="default" spacing="xl">
           <div className="max-w-xl mx-auto text-center flex flex-col items-center gap-5">
@@ -93,7 +93,7 @@ export default function NotFound() {
         </Section>
       </main>
       <Footer
-        phone="+1 281.793.0161"
+        phone="+1 2817930161"
         email="ttbautorepair@gmail.com"
         address="6801 Baneway Dr, Suite C, Houston, TX 77072"
         hours="Mon–Sat: 8am–6pm"

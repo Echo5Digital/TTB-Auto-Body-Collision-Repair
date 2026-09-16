@@ -40,7 +40,7 @@ const galleryItems = [
 export default function GalleryPage() {
   return (
     <>
-      <Header phone="+1 281.793.0161" />
+      <Header phone="+1 2817930161" />
       <main style={{ backgroundColor: "#08090B" }}>
         <PageHero
           eyebrow="Our Work"
@@ -182,7 +182,7 @@ export default function GalleryPage() {
         </Section>
       </main>
       <Footer
-        phone="+1 281.793.0161"
+        phone="+1 2817930161"
         email="ttbautorepair@gmail.com"
         address="6801 Baneway Dr, Suite C, Houston, TX 77072"
         hours="Mon–Sat: 8am–6pm"

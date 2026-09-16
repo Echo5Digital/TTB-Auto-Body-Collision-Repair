@@ -5,12 +5,6 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import EstimateForm from "@/components/EstimateForm";
 import {
-  Car,
-  Paintbrush,
-  Wrench,
-  Shield,
-  FileText,
-  Zap,
   CheckCircle,
   ChevronDown,
   MapPin,
@@ -45,43 +39,49 @@ export default function HomeClient({ faqData }: HomeClientProps) {
   const services = [
     {
       title: "Collision Repair",
+      slug: "collision-repair",
       description: "Expert collision repair for all types of vehicle damage.",
-      icon: Car,
+      icon: "/images/icon9.png",
       image:
         "https://images.pexels.com/photos/33749906/pexels-photo-33749906.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       title: "Auto Body Repair",
+      slug: "auto-body-repair",
       description: "Restore your vehicle's appearance and structural integrity.",
-      icon: Wrench,
+      icon: "/images/icon13.png",
       image:
         "https://images.pexels.com/photos/6870310/pexels-photo-6870310.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       title: "Painting & Refinishing",
+      slug: "painting-refinishing",
       description: "Flawless paint and color matching for a like-new finish.",
-      icon: Paintbrush,
+      icon: "/images/icon10.png",
       image:
         "https://images.pexels.com/photos/6870314/pexels-photo-6870314.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       title: "Frame Straightening",
+      slug: "frame-straightening",
       description: "Correct frame damage for a safer, stronger vehicle.",
-      icon: Zap,
+      icon: "/images/icon12.png",
       image:
         "https://images.pexels.com/photos/4480507/pexels-photo-4480507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       title: "Dent & Scratch Repair",
+      slug: "dent-scratch-repair",
       description: "Remove dents, scratches and restore your vehicle's look.",
-      icon: Shield,
+      icon: "/images/icon15.png",
       image:
         "https://images.pexels.com/photos/35149611/pexels-photo-35149611.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       title: "Insurance Claims Assistance",
+      slug: "insurance-claims-assistance",
       description: "We help guide you through the claims process.",
-      icon: FileText,
+      icon: "/images/icon16.png",
       image:
         "https://images.pexels.com/photos/4489732/pexels-photo-4489732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
@@ -155,13 +155,6 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             zIndex: 1,
           }}
         />
-        <div
-          className="absolute top-0 left-0 right-0 h-[4px]"
-          style={{
-            background: "linear-gradient(90deg, #E50914 0%, #A80712 60%, transparent 100%)",
-            zIndex: 2,
-          }}
-        />
 
         <div className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20" style={{ zIndex: 2 }}>
           <div className="max-w-3xl">
@@ -204,8 +197,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
-              <a
-                href="/#estimate"
+              <Link
+                href="/estimate"
                 className="inline-flex items-center gap-2 px-8 py-4 uppercase font-black tracking-widest text-white rounded-[0.375rem] transition-all duration-200 hover:brightness-110 active:scale-95"
                 style={{
                   fontFamily: '"Barlow Condensed", sans-serif',
@@ -216,7 +209,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 }}
               >
                 Get a Free Estimate
-              </a>
+              </Link>
               <a
                 href="tel:+12817930161"
                 className="inline-flex items-center gap-2 px-8 py-4 uppercase font-bold tracking-widest rounded-[0.375rem] transition-all duration-200 hover:bg-white/10"
@@ -374,9 +367,9 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 />
                 <div
                   className="absolute bottom-3 left-4 w-11 h-11 rounded-full flex items-center justify-center"
-                  style={{ border: "2px solid #E50914", backgroundColor: "rgba(8,9,11,0.85)" }}
+                  style={{ backgroundColor: "#08090B" }}
                 >
-                  <service.icon size={19} color="#E50914" strokeWidth={2} />
+                  <img src={service.icon} alt="" aria-hidden="true" className="w-8 h-8 object-contain" />
                 </div>
               </div>
 
@@ -401,15 +394,15 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                 </p>
 
                 <div className="flex items-center justify-between mt-auto pt-4" style={{ borderTop: "1px solid #1E2128" }}>
-                  <a
-                    href="/#contact"
+                  <Link
+                    href={`/services/${service.slug}`}
                     className="text-xs font-bold uppercase tracking-widest inline-flex items-center gap-1 transition-colors"
                     style={{ fontFamily: '"Barlow Condensed", sans-serif', color: "#D9DCE1" }}
                   >
                     Learn More <ArrowRight size={13} strokeWidth={2.5} color="#E50914" />
-                  </a>
-                  <a
-                    href="/#estimate"
+                  </Link>
+                  <Link
+                    href="/estimate"
                     className="inline-flex items-center px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-[0.375rem] transition-all duration-200 hover:brightness-110"
                     style={{
                       fontFamily: '"Barlow Condensed", sans-serif',
@@ -419,7 +412,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                     }}
                   >
                     Get Estimate
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -456,8 +449,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             >
               See the difference professional collision repair can make.
             </p>
-            <a
-              href="/#gallery"
+            <Link
+              href="/gallery"
               className="inline-flex items-center gap-2 px-7 py-3.5 uppercase font-black tracking-widest text-white rounded-[0.375rem] transition-all duration-200 hover:brightness-110 active:scale-95"
               style={{
                 fontFamily: '"Barlow Condensed", sans-serif',
@@ -469,7 +462,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
             >
               View Gallery
               <ArrowRight size={16} strokeWidth={2.5} />
-            </a>
+            </Link>
           </div>
 
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -717,8 +710,8 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-            <a
-              href="/#contact"
+            <Link
+              href="/estimate"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 uppercase font-black tracking-widest rounded-[0.375rem] transition-all duration-200 hover:bg-gray-100 active:scale-95"
               style={{
                 fontFamily: '"Barlow Condensed", sans-serif',
@@ -730,7 +723,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               }}
             >
               Get a Free Estimate
-            </a>
+            </Link>
             <a
               href="tel:+12817930161"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 uppercase font-bold tracking-widest rounded-[0.375rem] transition-all duration-200"
@@ -812,11 +805,11 @@ export default function HomeClient({ faqData }: HomeClientProps) {
                       }}
                     >
                       <a href="tel:+12817930161" className="hover:text-white transition-colors" style={{ color: "inherit" }}>
-                        +1 281.793.0161
+                        +1 2817930161
                       </a>
                       <br />
                       <a href="tel:+12819759433" className="hover:text-white transition-colors" style={{ color: "inherit" }}>
-                        +1 281.975.9433
+                        +1 2819759433
                       </a>
                     </p>
                   </div>
