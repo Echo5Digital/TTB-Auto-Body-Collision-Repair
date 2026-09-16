@@ -76,7 +76,8 @@ export default function Header({
         {/* Top bar */}
         <div
           style={{
-            backgroundColor: '#E50914',
+            backgroundColor: '#0E1014',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
             padding: '6px 0',
           }}
         >
@@ -91,11 +92,11 @@ export default function Header({
               gap: '0.5rem',
             }}
           >
-            <Phone size={13} color="#fff" strokeWidth={2.5} />
+            <Phone size={13} color="#E50914" strokeWidth={2.5} />
             <a
               href={`tel:${phone.replace(/\D/g, '')}`}
               style={{
-                color: '#fff',
+                color: '#D9DCE1',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '0.78rem',
                 fontWeight: 600,
@@ -105,10 +106,10 @@ export default function Header({
             >
               {phone}
             </a>
-            <span style={{ color: 'rgba(255,255,255,0.5)', margin: '0 0.5rem' }}>|</span>
+            <span style={{ color: 'rgba(255,255,255,0.2)', margin: '0 0.5rem' }}>|</span>
             <span
               style={{
-                color: 'rgba(255,255,255,0.85)',
+                color: '#8A8F9A',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '0.78rem',
                 fontWeight: 400,
