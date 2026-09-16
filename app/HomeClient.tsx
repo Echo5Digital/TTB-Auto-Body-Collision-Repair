@@ -103,17 +103,17 @@ export default function HomeClient({ faqData }: HomeClientProps) {
   ];
 
   const makesModels = [
-    "Chevrolet",
-    "Ford",
-    "Toyota",
-    "Honda",
-    "Nissan",
-    "BMW",
-    "Mercedes-Benz",
-    "Audi",
-    "Lexus",
-    "RAM",
-    "GMC",
+    { name: "Chevrolet", logo: "/brand/mono/chevrolet.png" },
+    { name: "Ford", logo: "/brand/mono/ford.png" },
+    { name: "Toyota", logo: "/brand/mono/toyota.png" },
+    { name: "Honda", logo: "/brand/mono/honda.png" },
+    { name: "Nissan", logo: "/brand/mono/nissan.png" },
+    { name: "BMW", logo: "/brand/mono/bmw.png" },
+    { name: "Mercedes-Benz", logo: "/brand/mono/mercedes.png" },
+    { name: "Audi", logo: "/brand/mono/audi.png" },
+    { name: "Lexus", logo: "/brand/mono/lexus.png" },
+    { name: "RAM", logo: "/brand/mono/ram.png" },
+    { name: "GMC", logo: "/brand/mono/gmc.png" },
   ];
 
   const whyChoose = [
@@ -505,50 +505,67 @@ export default function HomeClient({ faqData }: HomeClientProps) {
       </Section>
 
       {/* ── ALL MAKES AND MODELS ── */}
-      <Section background="default" spacing="md" id="makes-models">
-        <p
-          className="text-xs uppercase tracking-[0.2em] mb-2 flex items-center gap-2"
-          style={{ color: "#E50914", fontFamily: "Inter, sans-serif" }}
-        >
-          <span className="inline-block w-6 h-[2px]" style={{ backgroundColor: "#E50914" }} />
-          All Makes &amp; Models
-        </p>
-        <h2
-          className="uppercase leading-tight mb-2"
-          style={{
-            fontFamily: '"Barlow Condensed", sans-serif',
-            fontWeight: 800,
-            fontSize: "clamp(1.8rem, 3.2vw, 2.5rem)",
-            color: "#D9DCE1",
-            letterSpacing: "0.02em",
-          }}
-        >
-          We Service All Makes and Models
-        </h2>
-        <p
-          className="mb-8"
-          style={{ fontFamily: "Inter, sans-serif", fontSize: "0.95rem", color: "#8A8F9A", lineHeight: 1.65 }}
-        >
-          Foreign and domestic vehicles, including:
-        </p>
+      <Section background="default" spacing="lg" id="makes-models" className="relative overflow-hidden" maxWidth="full" containerClassName="!px-4 sm:!px-6 lg:!px-12 xl:!px-20">
+        <div className="relative">
+          <div className="absolute top-0 right-0 hidden lg:block pointer-events-none" style={{ width: "min(38vw, 520px)" }}>
+            <img
+              src="/images/carimgs.png"
+              alt=""
+              aria-hidden="true"
+              className="w-full h-auto object-contain opacity-90"
+              style={{
+                maskImage: "linear-gradient(to left, black 55%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to left, black 55%, transparent 100%)",
+              }}
+            />
+          </div>
 
-        <div className="flex flex-wrap gap-3">
-          {makesModels.map((make) => (
-            <span
-              key={make}
-              className="px-5 py-2.5 rounded-[0.375rem] border uppercase font-bold"
+          <div className="relative max-w-2xl">
+            <p
+              className="text-xs uppercase tracking-[0.2em] mb-3 flex items-center gap-2"
+              style={{ color: "#E50914", fontFamily: "Inter, sans-serif" }}
+            >
+              <span className="inline-block w-6 h-[2px]" style={{ backgroundColor: "#E50914" }} />
+              All Makes &amp; Models
+            </p>
+            <h2
+              className="uppercase leading-tight mb-5"
               style={{
                 fontFamily: '"Barlow Condensed", sans-serif',
-                fontSize: "0.9rem",
-                letterSpacing: "0.04em",
+                fontWeight: 800,
+                fontSize: "clamp(2rem, 3.6vw, 2.9rem)",
                 color: "#D9DCE1",
-                borderColor: "#1E2128",
-                backgroundColor: "#0E1014",
+                letterSpacing: "0.02em",
               }}
             >
-              {make}
-            </span>
-          ))}
+              We Service All <span style={{ color: "#E50914" }}>Makes &amp; Models</span>
+            </h2>
+            <div className="h-[3px] w-14 mb-7" style={{ backgroundColor: "#E50914" }} />
+            <p
+              className="mb-12"
+              style={{ fontFamily: "Inter, sans-serif", fontSize: "1rem", color: "#8A8F9A", lineHeight: 1.65 }}
+            >
+              Foreign and domestic vehicles, including:
+            </p>
+          </div>
+
+          <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-5">
+            {makesModels.map((make) => (
+              <div
+                key={make.name}
+                className="flex items-center justify-center rounded-xl border px-5 py-12"
+                style={{ borderColor: "#1E2128", backgroundColor: "#101318" }}
+                title={make.name}
+              >
+                <img
+                  src={make.logo}
+                  alt={`${make.name} logo`}
+                  className="max-h-12 w-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
