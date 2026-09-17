@@ -2,7 +2,7 @@
 // (hours, certifications, reviews, warranties) — use CONFIRM_BEFORE_LAUNCH
 // below to track what still needs client sign-off.
 
-export const SITE_URL = "https://example.com"; // placeholder — confirm final domain before launch
+export const SITE_URL = "https://ttb-auto-body-collision-repair.vercel.app"; // TODO: switch to custom domain when purchased
 
 export const business = {
   name: "TTB Auto Body & Collision Repair",

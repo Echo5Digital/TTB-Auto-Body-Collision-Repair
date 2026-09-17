@@ -294,7 +294,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {trustBadges.map(({ icon, title }) => (
               <div key={title} className="flex flex-col items-center text-center gap-3">
-                <img src={icon} alt="" className="w-28 h-28 object-contain" />
+                <img src={icon} alt={title} className="w-28 h-28 object-contain" />
                 <p
                   className="uppercase leading-tight"
                   style={{
@@ -657,7 +657,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               )}
               <img
                 src={step.icon}
-                alt=""
+                alt={step.title}
                 className="relative w-20 h-20 object-contain z-10"
                 style={{ backgroundColor: "#08090B", borderRadius: "9999px" }}
               />
@@ -867,7 +867,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               <div className="grid grid-cols-2 gap-4 content-start sm:border-l" style={{ borderColor: "#1E2128" }}>
                 {trustBadges.map(({ icon, title }) => (
                   <div key={title} className="flex flex-col items-center text-center gap-2 px-2">
-                    <img src={icon} alt="" className="w-24 h-24 object-contain" />
+                    <img src={icon} alt={title} className="w-24 h-24 object-contain" />
                     <p
                       className="uppercase leading-tight"
                       style={{
