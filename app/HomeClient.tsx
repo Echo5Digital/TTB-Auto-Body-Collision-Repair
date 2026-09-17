@@ -358,7 +358,7 @@ export default function HomeClient({ faqData }: HomeClientProps) {
               <div className="relative overflow-hidden" style={{ height: "170px" }}>
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={`${service.title} service at TTB Auto Body & Collision Repair in Houston, TX`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div

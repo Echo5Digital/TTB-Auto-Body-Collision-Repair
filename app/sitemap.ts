@@ -12,7 +12,6 @@ const STATIC_ROUTES: string[] = [
   "/service-area",
   "/privacy-policy",
   "/terms-of-use",
-  "/thank-you",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

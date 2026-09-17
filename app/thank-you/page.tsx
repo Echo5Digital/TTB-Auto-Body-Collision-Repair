@@ -6,11 +6,14 @@ import { buildMetadata } from "@/lib/seo";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
 import Link from "next/link";
 
-export const metadata = buildMetadata({
-  title: "Thank You | TTB Auto Body & Collision Repair",
-  description: "Thank you for contacting TTB Auto Body & Collision Repair in Houston, TX.",
-  path: "/thank-you",
-});
+export const metadata = {
+  ...buildMetadata({
+    title: "Thank You | TTB Auto Body & Collision Repair",
+    description: "Thank you for contacting TTB Auto Body & Collision Repair in Houston, TX.",
+    path: "/thank-you",
+  }),
+  robots: { index: false, follow: true },
+};
 
 export default function ThankYouPage() {
   return (

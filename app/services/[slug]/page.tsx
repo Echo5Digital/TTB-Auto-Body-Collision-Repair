@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import FaqAccordion from "@/components/FaqAccordion";
-import { services, getServiceBySlug, business } from "@/lib/business";
+import { services, getServiceBySlug, business, SITE_URL } from "@/lib/business";
 import { serviceContent } from "@/lib/serviceContent";
 import { buildMetadata } from "@/lib/seo";
 import { CheckCircle, ArrowRight } from "lucide-react";
@@ -61,7 +61,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
       name: business.name,
     },
     areaServed: business.areaServed,
-    url: `https://example.com/services/${service.slug}`,
+    url: `${SITE_URL}/services/${service.slug}`,
   };
 
   const otherServices = services.filter((s) => s.slug !== service.slug);
@@ -143,7 +143,7 @@ export default function ServiceDetailPage({ params }: ServicePageProps) {
             <div className="rounded-[0.375rem] overflow-hidden border" style={{ borderColor: "#1E2128" }}>
               <img
                 src={service.image}
-                alt={service.title}
+                alt={`${service.title} at TTB Auto Body & Collision Repair in Houston, TX`}
                 className="w-full object-cover"
                 style={{ height: "360px" }}
               />

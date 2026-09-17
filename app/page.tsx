@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HomeClient from "./HomeClient";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Houston Collision & Auto Body Repair | TTB Auto Body",
   description:
     "TTB Auto Body & Collision Repair in Houston, TX specializes in collision repair, auto body work, car painting, frame straightening, and insurance claim assistance. Get a free estimate today.",
-  alternates: {
-    canonical: "/",
-  },
-};
+  path: "/",
+});
 
 const faqData = [
   {
@@ -47,7 +45,7 @@ const serviceSchema = {
   description:
     "TTB Auto Body & Collision Repair in Houston, TX specializes in collision repair, auto body work, car painting, frame straightening, dent and scratch repair, and insurance claim assistance.",
   provider: {
-    "@type": "LocalBusiness",
+    "@type": "AutoBodyShop",
     name: "TTB Auto Body & Collision Repair",
     areaServed: "Houston, Texas",
   },

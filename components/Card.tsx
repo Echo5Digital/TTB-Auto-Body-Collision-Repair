@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({
   description,
   icon: Icon,
   imageSrc,
-  imageAlt = "Card image",
+  imageAlt,
   badge,
   cta,
   variant = "service",
@@ -68,7 +68,7 @@ const Card: React.FC<CardProps> = ({
         <div className="relative overflow-hidden" style={{ height: "200px" }}>
           <img
             src={imageSrc}
-            alt={imageAlt}
+            alt={imageAlt ?? title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div
